@@ -6,8 +6,8 @@
   "author": "Stan Chan",
   "icons": {
     "16": "img/favicon-16x16.png",
-    "48": "img/android-chrome-192x192.png",
-    "128": "img/android-chrome-192x192.png"
+    "48": "img/android-chrome-128x128.png",
+    "128": "img/android-chrome-128x128.png"
   },
   "browser_action": {
     "default_popup": "popup.html"
