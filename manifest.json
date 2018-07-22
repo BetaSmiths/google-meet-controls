@@ -18,7 +18,7 @@
   "content_scripts": [
     {
       "matches": ["https://meet.google.com/*"],
-      "js": ["lib/jquery-3.3.1.js", "content_script.js"],
+      "js": ["lib/jquery-3.3.1.min.js", "content_script.js"],
       "run_at": "document_end"
     }
   ],

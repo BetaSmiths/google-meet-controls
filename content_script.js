@@ -5,23 +5,28 @@ var port = chrome.runtime.connect({ name: "contentToBkg" });
 port.onMessage.addListener(function(msg) {
   console.log("switch requested", msg);
   if ($("div:contains('(You)')")) {
-    var idx = msg.switchTo
-    if(idx === 0) {
+    var idx = msg.switchTo;
+    if (idx === 0) {
       $("div:contains('(You)')")
-      .parents()
-      .eq(5)
-      .children().eq(0).find("div[role='button']").first()
-      .trigger("click");
+        .parents()
+        .eq(5)
+        .children()
+        .eq(0)
+        .find("div[role='button']")
+        .first()
+        .trigger("click");
     } else {
       $("div:contains('(You)')")
-      .parents()
-      .eq(5)
-      .children()
-      .eq(1).children().eq(idx-1)
-      .find("div[role='button']").first()
-      .trigger("click");
+        .parents()
+        .eq(5)
+        .children()
+        .eq(1)
+        .children()
+        .eq(idx - 1)
+        .find("div[role='button']")
+        .first()
+        .trigger("click");
     }
-    
   }
 });
 
@@ -44,7 +49,10 @@ var callback = function(mutationsList) {
 
     // TODO: use a listener for only when this changes
 
-    if ($("div:contains('(You)')").last().length > 0 && new Date() - lastUpdate > 1000) {
+    if (
+      $("div:contains('(You)')").last().length > 0 &&
+      new Date() - lastUpdate > 1000
+    ) {
       port.postMessage({
         participants: $(
           "." +
@@ -56,7 +64,7 @@ var callback = function(mutationsList) {
           .toArray()
           .map(x => x.innerText)
       });
-      lastUpdate = new Date()
+      lastUpdate = new Date();
     }
 
     if (!found && $("div:contains('(You)')")) {
