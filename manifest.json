@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "Meet Controls",
+  "description": "Replaces Meet control into your extension",
+  "version": "1",
+  "author": "Stan Chan",
+  "icons": {
+    "16": "img/favicon-16x16.png",
+    "48": "img/android-chrome-192x192.png",
+    "128": "img/android-chrome-192x192.png"
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": ["lib/jquery-3.3.1.js", "content_script.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": ["tabs", "http://meet.google.com/*"]
+}
